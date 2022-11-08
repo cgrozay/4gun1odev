@@ -24,7 +24,7 @@ public class TechnologyManager implements TechnologyService {
 
 	private TechnologyRepository technologyRepository;
 	private ProgrammingLanguageService programmingLanguageService;
-	private ProgrammingLanguageRepository programmingLanguageRepository;
+	
 
 	@Autowired
 	public TechnologyManager(TechnologyRepository technologyRepository,
@@ -32,7 +32,7 @@ public class TechnologyManager implements TechnologyService {
 			ProgrammingLanguageRepository programmingLanguageRepository) {
 		this.technologyRepository = technologyRepository;
 		this.programmingLanguageService = programmingLanguageService;
-		this.programmingLanguageRepository = programmingLanguageRepository;
+	
 	}
 
 	@Override
