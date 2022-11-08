@@ -5,10 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class GetByIdProgrammingLanguageResponse {
+@AllArgsConstructor
+public class GetAllTechnologyResponse {
 
 	private int id;
+	private int programmingLanguageId;
 	private String name;
 }
