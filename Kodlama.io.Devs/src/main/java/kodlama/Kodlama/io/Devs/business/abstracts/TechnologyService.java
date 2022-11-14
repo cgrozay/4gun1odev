@@ -12,6 +12,7 @@ import kodlama.Kodlama.io.Devs.business.responses.GetByIdTechnologyResponse;
 public interface TechnologyService {
 
 	List<GetAllTechnologyResponse> getAll();
+	List<GetAllTechnologyResponse> findByProgrammingLanguege(int programmingLanguageId);
 
 	GetByIdTechnologyResponse getById(int id);
 

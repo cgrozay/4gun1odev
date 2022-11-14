@@ -24,7 +24,6 @@ public class TechnologyManager implements TechnologyService {
 
 	private TechnologyRepository technologyRepository;
 	private ProgrammingLanguageService programmingLanguageService;
-	
 
 	@Autowired
 	public TechnologyManager(TechnologyRepository technologyRepository,
@@ -32,7 +31,7 @@ public class TechnologyManager implements TechnologyService {
 			ProgrammingLanguageRepository programmingLanguageRepository) {
 		this.technologyRepository = technologyRepository;
 		this.programmingLanguageService = programmingLanguageService;
-	
+
 	}
 
 	@Override
@@ -92,6 +91,24 @@ public class TechnologyManager implements TechnologyService {
 	public void delete(DeleteTechnologyRequest deleteTechnologyRequest) {
 		this.technologyRepository.deleteById(deleteTechnologyRequest.getId());
 
+	}
+
+	// Technology de bulunan Programların id sine göre listeleme
+	// Bu işlem yapılmadan önce TechnologyRepository de Sorgu yazılmıştır.
+	@Override
+	public List<GetAllTechnologyResponse> findByProgrammingLanguege(int programmingLanguageId) {
+	// findByProgrammingLanguage metodu TechnologyRepositoriy de Spring Data JPA nın @Query anotasyonu ile kullanılmıştır.
+		List<Technology> technologies = technologyRepository.findByProgrammingLanguege(programmingLanguageId);
+		List<GetAllTechnologyResponse> getAllTechnologyResponses = new ArrayList<GetAllTechnologyResponse>();
+
+		for (Technology technology : technologies) {
+			GetAllTechnologyResponse getAllTechnologyResponse = new GetAllTechnologyResponse();
+			getAllTechnologyResponse.setId(technology.getId());
+			getAllTechnologyResponse.setProgrammingLanguageId(technology.getProgrammingLanguege().getId());
+			getAllTechnologyResponse.setName(technology.getName());
+			getAllTechnologyResponses.add(getAllTechnologyResponse);
+		}
+		return getAllTechnologyResponses;
 	}
 
 }

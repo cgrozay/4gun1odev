@@ -16,6 +16,7 @@ import kodlama.Kodlama.io.Devs.business.requests.DeleteTechnologyRequest;
 import kodlama.Kodlama.io.Devs.business.requests.UpdateTechnologyRequest;
 import kodlama.Kodlama.io.Devs.business.responses.GetAllTechnologyResponse;
 import kodlama.Kodlama.io.Devs.business.responses.GetByIdTechnologyResponse;
+import kodlama.Kodlama.io.Devs.entities.concretes.Technology;
 
 @RequestMapping("/api/technology")
 @RestController
@@ -46,6 +47,10 @@ public class TechnologyController {
 	@DeleteMapping("/delete")
 	public void delete(DeleteTechnologyRequest deleteTechnologyRequest) {
 		this.technologyService.delete(deleteTechnologyRequest);
+	}
+	@GetMapping("/programminglanguageid")
+	public List<GetAllTechnologyResponse> findByProgrammingLanguege(int languageId){
+		return this.technologyService.findByProgrammingLanguege(languageId);
 	}
 	
 }
